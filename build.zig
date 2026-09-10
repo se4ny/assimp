@@ -56,6 +56,7 @@ pub fn build(b: *std.Build) void {
     const use_x3d = b.option(bool, "use_x3d", "whether to use the X3D importer") orelse false;
     const use_xgl = b.option(bool, "use_xgl", "whether to use the XGL importer") orelse false;
     const use_3ds = b.option(bool, "use_3ds", "whether to use the 3DS importer") orelse false;
+    const use_unreal = b.option(bool, "use_unreal", "whether to use the Unreal importer") orelse false;
 
     const upstream = b.dependency("assimp", .{});
 
@@ -202,6 +203,9 @@ pub fn build(b: *std.Build) void {
         mod.addCMacro("ASSIMP_BUILD_NO_GLTF_EXPORTER", "1");
     }
 
+    if (use_unreal) {} else {
+        mod.addCMacro("ASSIMP_BUILD_NO_3D_IMPORTER", "1");
+    }
     if (use_3ds) {} else {
         mod.addCMacro("ASSIMP_BUILD_NO_3DS_IMPORTER", "1");
         mod.addCMacro("ASSIMP_BUILD_NO_3DS_EXPORTER", "1");
