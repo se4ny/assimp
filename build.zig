@@ -10,7 +10,7 @@ pub fn build(b: *std.Build) void {
     const use_3mf = b.option(bool, "use_3mf", "whether to use the 3MF importer") orelse false;
     const use_ac = b.option(bool, "use_ac", "whether to use the AC importer") orelse false;
     const use_amf = b.option(bool, "use_amf", "whether to use the AMF importer") orelse false;
-    const use_ase = b.option(bool, "use_amf", "whether to use the ASE importer") orelse false;
+    const use_ase = b.option(bool, "use_ase", "whether to use the ASE importer") orelse false;
     const use_assbin = b.option(bool, "use_assbin", "whether to use the Assbin importer") orelse false;
     const use_assjson = b.option(bool, "use_assjson", "whether to use the Assjson importer") orelse false;
     const use_assxml = b.option(bool, "use_assxml", "whether to use the Assxml importer") orelse false;
@@ -31,7 +31,7 @@ pub fn build(b: *std.Build) void {
     const use_m3d = b.option(bool, "use_m3d", "whether to use the M3D importer") orelse false;
     const use_md2 = b.option(bool, "use_md2", "whether to use the MD2 importer") orelse false;
     const use_md3 = b.option(bool, "use_md3", "whether to use the MD3 importer") orelse false;
-    const use_md5 = b.option(bool, "use_md3", "whether to use the MD5 importer") orelse false;
+    const use_md5 = b.option(bool, "use_md5", "whether to use the MD5 importer") orelse false;
     const use_mdc = b.option(bool, "use_mdc", "whether to use the MDC importer") orelse false;
     const use_mdl = b.option(bool, "use_mdl", "whether to use the MDL importer") orelse false;
     const use_mmd = b.option(bool, "use_mmd", "whether to use the MMD importer") orelse false;
