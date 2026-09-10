@@ -56,7 +56,7 @@ pub fn build(b: *std.Build) void {
     const use_x3d = b.option(bool, "use_x3d", "whether to use the X3D importer") orelse false;
     const use_xgl = b.option(bool, "use_xgl", "whether to use the XGL importer") orelse false;
 
-    const upstream = b.dependencby("assimp", .{});
+    const upstream = b.dependency("assimp", .{});
 
     const mod = b.addModule("assimp", .{
         .target = target,
