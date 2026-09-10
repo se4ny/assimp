@@ -60,6 +60,11 @@ pub fn build(b: *std.Build) void {
 
     const upstream = b.dependency("assimp", .{});
 
+    const build_flags = .{
+        "-std=c++17",
+        "-fno-sanitize=alignment",
+    };
+
     const mod = b.addModule("assimp", .{
         .target = target,
         .optimize = optimize,
@@ -119,7 +124,7 @@ pub fn build(b: *std.Build) void {
     mod.addCSourceFiles(.{
         .root = upstream.path("code/Common"),
         .files = &common,
-        .flags = &.{"-std=c++17"},
+        .flags = &build_flags,
     });
 
     mod.addCSourceFiles(
@@ -163,9 +168,7 @@ pub fn build(b: *std.Build) void {
                 "PostProcessing/TriangulateProcess.cpp",
                 "PostProcessing/ValidateDataStructure.cpp",
             },
-            .flags = &.{
-                "-std=c++17",
-            },
+            .flags = &build_flags,
         },
     );
 
@@ -174,7 +177,7 @@ pub fn build(b: *std.Build) void {
         mod.addCSourceFiles(.{
             .root = upstream.path("code/AssetLib/FBX"),
             .files = &formats.FBX,
-            .flags = &.{"-std=c++17"},
+            .flags = &build_flags,
         });
     } else {
         mod.addCMacro("ASSIMP_BUILD_NO_FBX_IMPORTER", "1");
@@ -183,20 +186,16 @@ pub fn build(b: *std.Build) void {
 
     // glTF
     if (use_gltf) {
-        mod.addCSourceFiles(.{
-            .root = upstream.path("code/AssetLib/glTFCommon"),
-            .files = &formats.GLTF_COMMON,
-            .flags = &.{"-std=c++17"},
-        });
+        mod.addCSourceFiles(.{ .root = upstream.path("code/AssetLib/glTFCommon"), .files = &formats.GLTF_COMMON, .flags = &build_flags });
         mod.addCSourceFiles(.{
             .root = upstream.path("code/AssetLib/glTF"),
             .files = &formats.GLTF,
-            .flags = &.{"-std=c++17"},
+            .flags = &build_flags,
         });
         mod.addCSourceFiles(.{
             .root = upstream.path("code/AssetLib/glTF2"),
             .files = &formats.GLTF2,
-            .flags = &.{"-std=c++17"},
+            .flags = &build_flags,
         });
     } else {
         mod.addCMacro("ASSIMP_BUILD_NO_GLTF_IMPORTER", "1");
