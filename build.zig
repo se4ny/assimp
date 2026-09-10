@@ -333,7 +333,7 @@ pub fn build(b: *std.Build) void {
         mod.addCMacro("ASSIMP_BUILD_NO_IRRMESH_IMPORTER", "1");
     }
     if (use_blender) {} else {
-        mod.addCMacro("ASSIMP_BUILD_NO_BLENDER_IMPORTER", "1");
+        mod.addCMacro("ASSIMP_BUILD_NO_BLEND_IMPORTER", "1");
     }
     if (use_x3d) {} else {
         mod.addCMacro("ASSIMP_BUILD_NO_X3D_IMPORTER", "1");
