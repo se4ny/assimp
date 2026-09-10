@@ -5,8 +5,8 @@ pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
 
     const build_export = b.option(bool, "Build Export", "whether to build the export library") orelse false;
-    const use_fbx = b.option(bool, "Use FBX", "whether to use the FBX importer") orelse false;
-    const use_gltf = b.option(bool, "Use glTF", "whether to use the glTF importer") orelse false;
+    const use_fbx = b.option(bool, "use_fbx", "whether to use the FBX importer") orelse false;
+    const use_gltf = b.option(bool, "use_gltf", "whether to use the glTF importer") orelse false;
 
     const upstream = b.dependency("assimp", .{});
 
